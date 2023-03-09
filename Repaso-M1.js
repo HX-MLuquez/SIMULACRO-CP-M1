@@ -25,8 +25,8 @@ var countArray = function (arr) {// -----> [ 1, [ 2, [ 3, 4 ] ], [ 5, 6 ], 7 ]
   return num;
 };
 
-// const array = [1, [2, [3, 4]], [5, 6], 7];
-// console.log(countArray(array)); // Debería devolver 28 (1 + 2 + 3 + 4 + 5 + 6 + 7)
+const array = [1, [2, [3, 4]], [5, 6], 7];
+console.log(countArray(array)); // Debería devolver 28 (1 + 2 + 3 + 4 + 5 + 6 + 7)
 
 // Implementar la función countProps: a partir de un objeto en el cual cada propiedad puede contener
 // cualquier tipo de dato, determinar la cantidad de propiedades de objetos en cualquier nivel, ya sea el inicial
