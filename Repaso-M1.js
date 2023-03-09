@@ -10,8 +10,8 @@ const { Queue, Node, LinkedList, BinarySearchTree } = require("./DS.js");
 // Pista: utilizar el método Array.isArray() para determinar si algun elemento de array es un array anidado
 // [Para más información del método: https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/isArray]
 
-
-var countArray = function (arr) {// -----> [ 1, [ 2, [ 3, 4 ] ], [ 5, 6 ], 7 ]
+var countArray = function (arr) {
+  // -----> [ 1, [ 2, [ 3, 4 ] ], [ 5, 6 ], 7 ]
   // Tu código aca:
   var num = 0;
   // console.log("----->", arr) // input y tu Tipo de Dato Real
@@ -25,8 +25,8 @@ var countArray = function (arr) {// -----> [ 1, [ 2, [ 3, 4 ] ], [ 5, 6 ], 7 ]
   return num;
 };
 
-const array = [1, [2, [3, 4]], [5, 6], 7];
-console.log(countArray(array)); // Debería devolver 28 (1 + 2 + 3 + 4 + 5 + 6 + 7)
+// const array = [1, [2, [3, 4]], [5, 6], 7];
+// console.log(countArray(array)); // Debería devolver 28 (1 + 2 + 3 + 4 + 5 + 6 + 7)
 
 // Implementar la función countProps: a partir de un objeto en el cual cada propiedad puede contener
 // cualquier tipo de dato, determinar la cantidad de propiedades de objetos en cualquier nivel, ya sea el inicial
@@ -47,7 +47,20 @@ console.log(countArray(array)); // Debería devolver 28 (1 + 2 + 3 + 4 + 5 + 6 +
 
 var countProps = function (obj) {
   // Tu código aca:
+  // console.log("input---obj-->",obj) // INPUT -> EL TIPO DE DATOS
+  let count = 0;
+  for (const key in obj) {
+    // console.log(key);
+    count++;
+    if (typeof obj[key] === "object" && !Array.isArray(obj[key])) {
+      count = count + countProps(obj[key]);
+    }
+  }
+  return count;
 };
+
+// const obj = { a: 1, b: { z: 3, W: 22 }, c: 3, d: 4 }; // 6
+// console.log(countProps(obj));
 
 // Implementar el método changeNotNumbers dentro del prototype de LinkedList que deberá cambiar
 // aquellos valores que no puedan castearse a numeros por 'Kiricocho' y devolver la cantidad de cambios que hizo
