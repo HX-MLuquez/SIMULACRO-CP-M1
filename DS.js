@@ -17,7 +17,10 @@ Queue.prototype.size = function() {
 function LinkedList() {
   this.head = null;
 }
-
+function Node(valor){
+  this.value = valor;
+  this.next = null;
+}
 LinkedList.prototype.add = function(valor) {
   var nuevoNodo = new Node(valor);
 
@@ -74,10 +77,7 @@ LinkedList.prototype.search = function(arg) {
   return null;
 }
 
-function Node(valor){
-  this.value = valor;
-  this.next = null;
-}
+
 
 function BinarySearchTree(valor) {
   this.value = valor;

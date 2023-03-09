@@ -52,6 +52,7 @@ var countProps = function (obj) {
   for (const key in obj) {
     // console.log(key);
     count++;
+    //               bool                         bool -> !false  => true
     if (typeof obj[key] === "object" && !Array.isArray(obj[key])) {
       count = count + countProps(obj[key]);
     }
@@ -68,11 +69,30 @@ var countProps = function (obj) {
 // Ejemplo 1:
 //    Suponiendo que la lista actual es: Head --> [1] --> ['2'] --> [false] --> ['Franco']
 //    lista.changeNotNumbers();
-//    Ahora la lista quedaría: Head --> [1] --> ['2'] --> [false] --> ['Kirikocho] y la función debería haber devuelto el valor 1
+//    Ahora la lista quedaría: Head --> [1] --> ['2'] --> [false] --> ['Kiricocho'] y la función debería haber devuelto el valor 1
 
 LinkedList.prototype.changeNotNumbers = function () {
   // Tu código aca:
+  let count = 0;
+  let current = this.head;
+  while (current) {
+    if (!isNaN(current.value)) {
+      current = current.next;
+    } else {
+      current.value = "Kiricocho";
+      count++;
+      current = current.next;
+    }
+  }
+  return count;
 };
+
+// const miLista = new LinkedList();
+// console.log(miLista.add(1));
+// console.log(miLista.add("2"));
+// console.log(miLista.add("Mau"));
+// console.log(miLista);
+// console.log(miLista.changeNotNumbers());
 
 // Implementar la función mergeQueues que a partir de dos queues recibidas por parametro
 // debe devolver una nueva Queue que vaya mergeando los nodos de las anteriores.
