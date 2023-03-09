@@ -97,13 +97,26 @@ LinkedList.prototype.changeNotNumbers = function () {
 // Implementar la función mergeQueues que a partir de dos queues recibidas por parametro
 // debe devolver una nueva Queue que vaya mergeando los nodos de las anteriores.
 // Ejemplo:
-// - queueOne: [7,3,5]
-// - queueTwo: [2,4,6]
+// - queueOne: []
+// - queueTwo: [4,6]
 // mergeQueues(queueOne, queueTwo) --> [7,2,3,4,5,6]
 // IMPORTANTE: NO son arreglos sino que son Queues.
 
 var mergeQueues = function (queueOne, queueTwo) {
+  // Queue { array: [ 2, 4, 6 ] }
   // Tu código aca:
+  const newQueue = new Queue();
+  // console.log("queueOne----->", queueOne);
+  // console.log("queueTwo----->", queueTwo);
+  while (queueOne.size() || queueTwo.size()) {
+    var first = queueOne.dequeue();
+    var two = queueTwo.dequeue();
+    // first && newQueue.enqueue(first)
+    // two && newQueue.enqueue(two)
+    if (first) newQueue.enqueue(first);
+    if (two) newQueue.enqueue(two);
+  }
+  return newQueue;
 };
 
 // Implementar la funcion closureMult que permita generar nuevas funciones que representen
